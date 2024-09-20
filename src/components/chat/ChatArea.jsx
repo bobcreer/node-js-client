@@ -7,7 +7,7 @@ import api from '../../configs/api';
 import autoScroll from '../../utility/autoScroll';
 
 const ChatArea = ({ selectedUser }) => {
-    const socket = io('http://localhost:5000');
+    const socket = io(getEnv('VITE_SERVER_URL'));
 
     const { user } = useUser();
     const [message, setMessage] = useState('');
