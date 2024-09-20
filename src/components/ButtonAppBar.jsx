@@ -19,26 +19,13 @@ import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 const navItems = [
   {
-    path: '/',
-    name: 'Home'
-  },
-  {
-    path: '/about',
-    name: 'About'
-  },
-  {
-    path: '/contact',
-    name: 'Contact'
-  },
-  {
-    path: '/login',
-    name: 'Login'
+    path: '/chats',
+    name: 'Chat'
   }
 ]
 
 function DrawerAppBar(props) {
   const nav = useNavigate()
-
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);

@@ -1,12 +1,13 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { passwordValidation, usernameValidation } from '../utility/inputValidations'
 import axios from 'axios'
+import api from '../configs/api'
 
 const Register = () => {
-
+    const nav = useNavigate
     const {
         register,
         handleSubmit, setError,
@@ -14,10 +15,11 @@ const Register = () => {
     } = useForm()
 
     const onSubmit = (data) => {
-        axios.post('http://localhost:5000/register', data)
+        api.post('/register', data)
             .then(res => {
                 const data = res.data
                 console.log(data)
+                nav('/chats')
             }).catch(err => {
                 const res = err.response
                 setError(res.data.field, { type: 'validate', message: res.data.message })
